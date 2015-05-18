@@ -1,0 +1,53 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+    
+    <form action="" method="post" name="task">
+      {{ form.hidden_tag() }}
+      <table>
+          <tr>
+              <td>Todo:</td>
+              <td>{{ form.task(size=30, maxlength=140) }}</td>
+              <td>
+              {% for error in form.task.errors %}
+              <span style="color: red;">[{{ error }}]</span><br>
+              {% endfor %}
+              </td>
+          </tr>
+          <tr>
+              <td></td>
+              <td><input type="submit" value="Add Task"></td>
+              <td></td>
+          </tr>
+      </table>
+  </form>
+    <div  id="taskbar"><p id="margin_left"><b><a href="{{ url_for('index') }}" id="color_black">All Tasks</a></b> | <b><a href=" {{ url_for('active') }} " id="color_black" >Active</a></b> | <b><a href="{{ url_for('completed') }}" id="color_black">Completed</a></b></p></div>
+	<br>
+
+	<div class="div1" id="tasks">
+    {% for task in tasks %}
+    	{% if task.username == user.nickname %}
+    		{% if task.status == 1%}
+    		<p>
+    	  &#160;&#160;<a href=" {{ url_for('delete', id=task.id)}} "><img src="static/images/delete.png" width="15px" height="15px"></a>&#160;&#160;{{ task.username }} yet to do: <b><font color="green">{{ task.body }}</font></b>
+    		</p>
+    		{% endif %}
+    		
+    	{% endif %}
+    {% endfor %}
+    {% for task in tasks %}
+    	{% if task.username == user.nickname %}
+    		{% if task.status == 0%}
+    		<p>
+    	  &#160;&#160;<a href=" {{ url_for('delete', id=task.id)}} "><img src="static/images/delete.png" width="15px" height="15px"></a>&#160;&#160;{{ task.username }} yet to do: <b><font color="red">{{ task.body }}</font></b>
+    		</p>
+    		{% endif %}
+    		{% endif %}
+    	{% endfor %}
+	<img src="static/images/delete.png" width="15px" height="15px" alt="" id="margin_left"> = DELETE
+	<img src="static/images/green.png" width="15px" height="15px" alt="" id="margin_left"> = ACTIVE
+	<img src="static/images/red.png" width="15px" height="15px" alt="" id="margin_left"> = COMPLETED
+	</div>
+	{% endblock %}
+

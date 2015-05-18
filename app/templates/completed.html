@@ -1,0 +1,19 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+    
+  <div  id="taskbar"><p id="margin_left"><b><a href="{{ url_for('index') }}" id="color_black">All Tasks</a></b> | <b><a href=" {{ url_for('active') }} " id="color_black" >Active</a></b> | <b><a href="{{ url_for('completed') }}" id="color_black">Completed</a></b></p></div>
+	<br>
+	<div class="div1" id="tasks">
+    {% for task in tasks %}
+    {% if task.username == user.nickname %}
+    		{% if task.status == 0 %}
+    			<p>
+    		  	&#160;&#160;{{ task.username }} already did: <b>{{ task.body }}</b>  <img src="static/images/done.png" alt="" height="15" width="15"> 
+   				</p>
+   			{% endif %}
+    	{% endif %}
+    {% endfor %}
+    </div>
+{% endblock %}

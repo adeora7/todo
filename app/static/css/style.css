@@ -1,0 +1,51 @@
+.div1{
+	border:1px solid gray;
+	border-radius:10px;
+}
+
+#navbar{
+	background-color: #F5DA81;
+}
+
+#margin_left{
+	margin-left: 30px;
+}
+
+#color_gray{
+	color:gray;
+	font-family:Josefin Slab;
+}
+
+#color_green{
+	color:green;
+	font-family:Josefin Slab;
+}
+
+#color_red{
+	color:red;
+	font-family:Josefin Slab;
+}
+#color_black{
+	color:black;
+}
+#taskbar{
+	margin-left: 35%;
+	font-family:Josefin Slab;
+}
+#tasks{
+	background-color: #D8D8D8;
+	font-family:Josefin Slab;
+	margin : 20px;
+}
+#footer{
+	background-color:#F5DA81; 
+	width:100%;
+	height:30px;
+	position:absolute;
+	bottom:10px;
+	left:0;
+	font-family:Josefin Slab;
+}
+#newfont{
+	font-family: Josefin Slab;
+}
